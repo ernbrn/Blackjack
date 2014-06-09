@@ -37,7 +37,7 @@ class PlayGame
        game_over = false
        while game_over != true
        @player.hand_inspect
-       get_bets
+      break if get_bets == true
        player_hit?
        dealer_hit?(@dealer_hand)
        if show_cards == true
@@ -55,13 +55,16 @@ class PlayGame
        p_val = @player.get_card_value
        bets = @dealer.get_bets
        bets = bets * 2
-       
+
 
        if p_val > 21 && d_val < 22
        puts  "You bust with #{p_val}. The dealer had #{d_val}. Game over"
      elsif p_val > d_val || d_val > 21 && p_val < 22
          puts "You win with #{p_val}! The dealer had #{d_val}. You won $#{bets}"
-         @dealer.add_money(bets)
+         bets = @dealer.get_bets
+         money = (bets * 2)
+         @dealer.add_money(money)
+         @dealer.review_money
        elsif
          p_val < d_val && d_val < 22
          puts "Uh oh. Looks like you lost. You had #{p_val} and the dealer had #{d_val}."
@@ -131,6 +134,3 @@ class PlayGame
   end
 
 end
-
-game = PlayGame.new
-game.play

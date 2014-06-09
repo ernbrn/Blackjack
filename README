@@ -1,11 +1,17 @@
 BlackJack
 
+Run this game by running play_blackjack.rb
 
 Foreward:
 * You start out with $100. You will be able to make money, but a warning: once
 your money is all gone, your game is over.
 
 *You are playing against the dealer. Rob him blind.
+
+*In the event you and the dealer tie, you will not lose the money you bet. This
+is called a push
+
+*In the event you win (good luck with that), your bets will be doubled.
 
 Rules:
 1) Place your bet. There is no minimum, and your maximum is only however much
