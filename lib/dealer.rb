@@ -1,6 +1,5 @@
 require "deck"
 require "hand"
-require "player"
 require "money"
 
 class Dealer
