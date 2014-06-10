@@ -49,19 +49,19 @@ class PlayGame
    end
 
      def find_score
-       @player.card_value_inspect(@player.get_hand)
-       @dealer_hand.card_value_inspect(@dealer_hand.get_hand)
-       d_val = @dealer_hand.get_card_value
-       p_val = @player.get_card_value
-       bets = @dealer.get_bets
-       bets = bets * 2
+       @player.card_value_inspect(@player.my_hand)
+       @dealer_hand.card_value_inspect(@dealer_hand.my_hand)
+       d_val = @dealer_hand.card_value
+       p_val = @player.card_value
+       bets = @dealer.bet
+
 
 
        if p_val > 21 && d_val < 22
        puts  "You bust with #{p_val}. The dealer had #{d_val}. Game over"
      elsif p_val > d_val || d_val > 21 && p_val < 22
-         puts "You win with #{p_val}! The dealer had #{d_val}. You won $#{bets}"
-         bets = @dealer.get_bets
+         puts "You win with #{p_val}! The dealer had #{d_val}. You won $#{bets*2}"
+         bets = @dealer.bet
          money = (bets * 2)
          @dealer.add_money(money)
          @dealer.review_money
@@ -72,12 +72,12 @@ class PlayGame
 
        elsif p_val == d_val && @dealer_hand.black_jack?!= true
          puts "Looks like you and the dealer tied. You had #{p_val} and the dealer had #{d_val} The game is a push.\n"
-         @dealer.add_money(@dealer.get_bets)
+         @dealer.add_money(@dealer.bet)
          @dealer.review_money
 
        elsif p_val == d_val && @player.black_jack? == false
-         puts "You got blackjack! The dealer had 21. You won $#{bets}. \n"
-       bets = @dealer.get_bets
+         puts "You got blackjack! The dealer had 21. You won $#{bets*2}. \n"
+       bets = @dealer.bet
        money = (bets * 2)
        @dealer.add_money(money)
        @dealer.review_money
@@ -91,10 +91,8 @@ class PlayGame
        @dealer.review_money
    else
          puts "Looks like you and the dealer both bust. You had #{p_val} and the dealer had #{d_val} The game is a push.\n"
-         @dealer.add_money(@dealer.get_bets)
+         @dealer.add_money(@dealer.bet)
          @dealer.review_money
-
-
        end
 
      end
@@ -107,7 +105,7 @@ class PlayGame
 
 
   def get_dealer_hand
-    @dealer_hand.get_hand
+    @dealer_hand.my_hand
   end
 
   def get_dealer_ob
@@ -115,7 +113,7 @@ class PlayGame
   end
 
   def winning_hand?(hand_ob)
-     a = hand_ob.twenty_one?(hand_ob.get_card_value)
+     a = hand_ob.twenty_one?(hand_ob.card_value)
      b = false
      if a == true
       a
@@ -134,7 +132,7 @@ class PlayGame
   end
 
   def dealer_hit?(hand_ob)
-    if hand_ob.card_value_inspect(hand_ob.get_hand) < 17
+    if hand_ob.card_value_inspect(hand_ob.my_hand) < 17
       hand_ob.get_hit
     end
   end
@@ -144,7 +142,7 @@ class PlayGame
 
   def get_bets
     @dealer.ask_about_bets
-    bets = @dealer.get_bets
+    bets = @dealer.bet
     @dealer.review_bets
     @dealer.review_money
     out = @dealer.out_of_money?

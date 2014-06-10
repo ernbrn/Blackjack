@@ -1,21 +1,18 @@
 class Money
+
+  attr_reader :bets, :money
+
   def initialize
     @money = 0
     @bets = 0
   end
 
-  def get_money
-    @money
-  end
 
   def bet(bets)
     @bets = bets + @bets
     @money -= bets
   end
 
-  def get_bets
-  @bets
-  end
 
   def add_money(amount)
     @money += amount

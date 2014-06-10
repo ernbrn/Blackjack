@@ -9,12 +9,12 @@ class DeckTest < MiniTest::Unit::TestCase
 
   def test_make_deck
 
-    assert_equal @deck.get_deck.size, 52
+    assert_equal @deck.deck.size, 52
     puts @deck.inspect
   end
 
   def test_deck_shuffle
-    refute(@deck.get_deck.eql?(@deck.get_shuffled_deck), "Not shuffled")
+    refute(@deck.deck.eql?(@deck.get_shuffled_deck), "Not shuffled")
   end
 
 end

@@ -8,13 +8,8 @@ class Deck
     # @card = Card.new
   end
 
-  def rank
-    @rank
-  end
+  attr_reader :rank, :suit, :deck
 
-  def suit
-    @suit
-  end
 
 
   def push_to_deck(card)
@@ -30,9 +25,6 @@ class Deck
     end
   end
 
-  def get_deck
-    @deck
-  end
 
 
   def shuffle_deck
@@ -44,7 +36,3 @@ def get_shuffled_deck
   @deck_shuffled
 end
 end
-
-
-# my_deck = Deck.new
-# puts my_deck.shuffle_deck.inspect

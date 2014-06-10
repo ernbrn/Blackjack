@@ -3,25 +3,28 @@ require "hand"
 require "money"
 
 class Dealer
+
+
   def initialize
     @deck = Deck.new
     @money = Money.new
   end
 
-  def set_bets=(amount)
-    @money.bet(amount)
+  def bets=(bet)
+    @money.bet(bet)
   end
 
-  def get_bets
-    @money.get_bets
+  def bet
+    @money.bets
   end
+
 
   def review_bets
     @money.review_bets
   end
 
   def out_of_money?
-    if @money.get_money < 0
+    if @money.money < 0
       out = true
     else out = false
     end
@@ -45,7 +48,7 @@ class Dealer
     print "How much would you like to bet? >> $"
     amount = gets.to_i
     @money.bet(amount)
-    @money.get_bets
+    @money.bets
   end
 
   def ask_if_wanna_hit

@@ -1,9 +1,13 @@
 BlackJack
 
-Run this game by running play_blackjack.rb
-Run each test by executing ruby -Ilib test/*name_of_file_here*.rb
+Utility forward:
+*Run this game by running play_blackjack.rb
+*Run each test by executing ruby -Ilib test/*name_of_file_here*.rb
+*I did not use inheritance because I felt like it would only be useful I had a player and a
+dealer class. I only have a dealer class, so inheritance would not make sense.
 
-Foreward:
+
+Forward to Player:
 * You start out with $100. You will be able to make money, but a warning: once
 your money is all gone, your game is over.
 

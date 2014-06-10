@@ -2,17 +2,11 @@
 # this method assembles the deck
 class Card
 
+  attr_reader :rank, :suit
+
   def initialize(suit,rank)
     @suit = suit
     @rank = rank
-  end
-
-  def rank
-    @rank
-  end
-
-  def suit
-    @suit
   end
 
   def to_s

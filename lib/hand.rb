@@ -1,6 +1,9 @@
 require 'deck'
 require 'card'
 class Hand
+
+  attr_reader :my_hand, :card_value
+
   def initialize
     @deck = Deck.new
     @deck.make_deck
@@ -27,9 +30,7 @@ class Hand
     end
   end
 
-  def get_hand
-    @my_hand
-  end
+
 
   def hand_inspect
     size = @my_hand.size
@@ -57,9 +58,6 @@ end
     @card_value = evaluate_aces(@card_value, hand)
   end
 
-  def get_card_value
-    @card_value
-  end
 
   def over_21?(card_value)
     if card_value > 21
@@ -69,10 +67,6 @@ end
     end
     over
   end
-
-
-
-
 
   def twenty_one?(card_value)
     if card_value == 21
@@ -101,7 +95,7 @@ end
 
   def black_jack?
     black_jack = false
-    if get_hand.size == 2 && get_card_value == 21
+    if my_hand.size == 2 && card_value == 21
       black_jack = true
     end
     black_jack
