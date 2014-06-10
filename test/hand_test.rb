@@ -10,6 +10,7 @@ class HandTest < MiniTest::Unit::TestCase
   end
 
 #tests the first deal is 2 cards
+
   def test_get_dealt
     @hand.get_dealt
     assert_equal(@hand.get_hand.size, 2)
@@ -18,9 +19,10 @@ class HandTest < MiniTest::Unit::TestCase
   end
 
 #tests that the hit is 1 card
+
   def test_get_hit
     @hand.get_hit
-    assert_equal(@hand.get_hand.size, 1 )
+    assert_equal(1, @hand.get_hand.size )
   end
 
   def test_face_cards_become_numbers

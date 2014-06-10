@@ -67,20 +67,37 @@ class PlayGame
          @dealer.review_money
        elsif
          p_val < d_val && d_val < 22
-         puts "Uh oh. Looks like you lost. You had #{p_val} and the dealer had #{d_val}."
-       elsif p_val == d_val
-         puts "Looks like you and the dealer tied. You had #{p_val} and the dealer had #{d_val} The game is a push."
+         puts "Uh oh. Looks like you lost. You had #{p_val} and the dealer had #{d_val}.\n"
+         @dealer.review_money
+
+       elsif p_val == d_val && @dealer_hand.black_jack?!= true
+         puts "Looks like you and the dealer tied. You had #{p_val} and the dealer had #{d_val} The game is a push.\n"
          @dealer.add_money(@dealer.get_bets)
-       else
-         puts "Looks like you and the dealer both bust. You had #{p_val} and the dealer had #{d_val} The game is a push."
+         @dealer.review_money
+
+       elsif p_val == d_val && @player.black_jack? == false
+         puts "You got blackjack! The dealer had 21. You won $#{bets}. \n"
+       bets = @dealer.get_bets
+       money = (bets * 2)
+       @dealer.add_money(money)
+       @dealer.review_money
+     elsif p_val == d_val && @dealer_hand.black_jack? == true && @player.black_jack? != true
+       "You got 21, but the dealer got black jack. You lose.\n"
+       @dealer.review_money
+
+     elsif @dealer_hand.black_jack? == true && @player.black_jack? == true
+       "You and the dealer both got blackjack. The game is a push.\n"
+       @dealer.add_money(@dealer.get_bets)
+       @dealer.review_money
+   else
+         puts "Looks like you and the dealer both bust. You had #{p_val} and the dealer had #{d_val} The game is a push.\n"
          @dealer.add_money(@dealer.get_bets)
+         @dealer.review_money
+
 
        end
 
      end
-
-
-
 
     def show_cards
       puts "Ready to show your hand? Yes or no."
@@ -121,6 +138,8 @@ class PlayGame
       hand_ob.get_hit
     end
   end
+
+
 
 
   def get_bets

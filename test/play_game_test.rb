@@ -64,7 +64,7 @@ class PlayGameTest < MiniTest::Unit::TestCase
     card_value = handdealer.get_card_value
     puts card_value
     assert_equal(true, handdealer.twenty_one?(card_value))
-    assert_equal(false, handdealer.black_jack?(card_value,dealer_hand))
+    assert_equal(false, handdealer.black_jack?)
     #test winning_hand
     assert_equal(true,@player.winning_hand?(handdealer))
   end
@@ -82,7 +82,7 @@ class PlayGameTest < MiniTest::Unit::TestCase
     card_value = handdealer.get_card_value
     puts card_value
     assert_equal(true, handdealer.twenty_one?(card_value))
-    assert_equal(true, handdealer.black_jack?(card_value,dealer_hand))
+    assert_equal(true, handdealer.black_jack?)
     #test winning hand
     assert_equal(true,@player.winning_hand?(handdealer))
   end

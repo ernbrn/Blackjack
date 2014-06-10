@@ -70,13 +70,7 @@ end
     over
   end
 
-  def black_jack?(card_value, hand)
-    black_jack = false
-    if hand.size == 2 && card_value == 21
-      black_jack = true
-    end
-    black_jack
-  end
+
 
 
 
@@ -103,6 +97,14 @@ end
     end
   end
   card_value
+  end
+
+  def black_jack?
+    black_jack = false
+    if get_hand.size == 2 && get_card_value == 21
+      black_jack = true
+    end
+    black_jack
   end
 
   def evaluate_non_aces(card_value, hand)
