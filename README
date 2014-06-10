@@ -1,6 +1,7 @@
 BlackJack
 
 Run this game by running play_blackjack.rb
+Run each test by executing ruby -Ilib test/*name_of_file_here*.rb
 
 Foreward:
 * You start out with $100. You will be able to make money, but a warning: once
@@ -15,7 +16,7 @@ is called a push
 
 Rules:
 1) Place your bet. There is no minimum, and your maximum is only however much
-mooh-lah is in your bank.
+mooh-lah is in your bank. Don't go broke, the dealer will know.
 
 2) Place a 2nd bet after you see your hand.
 
