@@ -1,7 +1,7 @@
 BlackJack
 
 Utility forward:
-*Run this game by running play_blackjack.rb
+*Run this game by entering the bin folder in the command line and typing ./bj
 *Run each test by executing ruby -Ilib test/*name_of_file_here*.rb
 *I did not use inheritance because I felt like it would only be useful I had a player and a
 dealer class. I only have a dealer class, so inheritance would not make sense.
